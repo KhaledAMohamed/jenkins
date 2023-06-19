@@ -1,7 +1,9 @@
 
 pipeline {
     agent any
- 
+    environment {
+    DOCKERHUB_CREDENTIALS = credentials('docker')
+    }
     stages {
          // Stage for checking out the source code from version control
        stage('Checkout') {
@@ -15,23 +17,16 @@ pipeline {
                 sh 'docker build -t hello:2.0 .'
             }
         }
- 
-        stage('Push') {
+        stage('Login') {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'docker',
-                    usernameVariable: 'DOCKER_USERNAME',
-                    passwordVariable: 'DOCKER_PASSWORD'
-                )]) {
-                    // Log in to the Docker registry
-                    script {
-                        docker.withRegistry('', DOCKER_USERNAME, DOCKER_PASSWORD) {
-                            // Push the Docker image to the registry
-                            sh 'docker push hello:2.0'
-                        }
-                    }
-                }
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                echo 'Login Completed' 
+       }
+    }
+        stage('Push') {
+            stages {
+              sh 'docker push hello:2.0'
+            }
             }
         }
     }
-}
