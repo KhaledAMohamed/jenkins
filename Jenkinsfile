@@ -24,7 +24,7 @@ pipeline {
        }
     }
         stage('Push') {
-            stages {
+            steps {
               sh 'docker push hello:2.0'
             }
             }
