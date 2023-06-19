@@ -20,12 +20,12 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'docker',
-                    usernameVariable: 'Username',
-                    passwordVariable: 'Password'
+                    usernameVariable: 'DOCKER_USERNAME',
+                    passwordVariable: 'DOCKER_PASSWORD'
                 )]) {
                     // Log in to the Docker registry
                     script {
-                        docker.withRegistry('', Username, Password) {
+                        docker.withRegistry('', DOCKER_USERNAME, DOCKER_PASSWORD) {
                             // Push the Docker image to the registry
                             sh 'docker push hello:2.0'
                         }
