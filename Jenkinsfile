@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your Docker image
-                sh 'docker build -t hello1:2.0 .'
+                sh 'docker build -t khaledalaa/hello1:2.0 .'
             }
         }
         stage('Login') {
@@ -25,8 +25,14 @@ pipeline {
     }
         stage('Push') {
             steps {
-              sh 'docker push hello1:2.0'
+              sh 'docker push khaledalaa/hello1:2.0'
             }
             }
+         stage('Logout') {
+            steps {
+                sh 'docker logout'
+                echo 'Logout Completed' 
+       }
+    }
         }
     }
