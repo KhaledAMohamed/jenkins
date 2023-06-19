@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build your Docker image
-                sh 'docker build -t hello:2.0 .'
+                sh 'docker build -t hello1:2.0 .'
             }
         }
         stage('Login') {
@@ -25,7 +25,7 @@ pipeline {
     }
         stage('Push') {
             steps {
-              sh 'docker push hello:2.0'
+              sh 'docker push hello1:2.0'
             }
             }
         }

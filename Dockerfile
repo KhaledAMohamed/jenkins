@@ -1,2 +1,2 @@
 FROM alpine 
-CMD [ "echo","jenkins docker file " ] 
+CMD [ "echo","jenkins docker file2 " ] 
