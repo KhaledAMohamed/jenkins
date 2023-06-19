@@ -1,24 +1,5 @@
 
 pipeline {
-  agent any
-  stages {
-   
-    stage ('Push'){
-      steps {
-        withCredentials[usernamePassword(
-          credentialId: 'docker',
-          usernameVariable: 'DOCKER_USERNAME',
-          passwordVariable: 'DOCKER_PASSWORD'
-        )]
-        )]
-      }
-    }
-}
-}
-
-
-
-pipeline {
     agent any
  
     stages {
