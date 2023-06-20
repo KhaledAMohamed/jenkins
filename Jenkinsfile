@@ -1,16 +1,6 @@
 pipeline {
   agent any
-  
-  parameters {
-    string(name: 'ENVIRONMENT', defaultValue: 'development', description: 'Target environment')
-    booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
-  }
-  
-  environment {
-    GIT_BRANCH = "${env.BRANCH_NAME}"
-    BUILD_NUMBER = "${env.BUILD_NUMBER}"
-  }
-  
+
   stages {
     stage('Build') {
       steps {
@@ -20,11 +10,6 @@ pipeline {
     }
     
     stage('Test') {
-      when {
-        expression {
-          params.RUN_TESTS == true
-        }
-      }
       steps {
         echo 'Running tests...'
         // Add test steps here
@@ -32,13 +17,8 @@ pipeline {
     }
     
     stage('Deploy') {
-      when {
-        expression {
-          params.ENVIRONMENT == 'production'
-        }
-      }
       steps {
-        echo "Deploying to ${params.ENVIRONMENT} environment..."
+        echo 'Deploying...'
         // Add deployment steps here
       }
     }
