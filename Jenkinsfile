@@ -1,38 +1,46 @@
-
 pipeline {
-    agent any
-    environment {
-    DOCKERHUB_CREDENTIALS = credentials('docker')
+  agent any
+  
+  parameters {
+    string(name: 'ENVIRONMENT', defaultValue: 'development', description: 'Target environment')
+    booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests?')
+  }
+  
+  environment {
+    GIT_BRANCH = "${env.BRANCH_NAME}"
+    BUILD_NUMBER = "${env.BUILD_NUMBER}"
+  }
+  
+  stages {
+    stage('Build') {
+      steps {
+        echo 'Building...'
+        // Add build steps here
+      }
     }
-    stages {
-         // Stage for checking out the source code from version control
-       stage('Checkout') {
-          steps {
-             checkout scm
-         }
-       }
-        stage('Build') {
-            steps {
-                // Build your Docker image
-                sh 'docker build -t khaledalaa/hello1:2.0 .'
-            }
+    
+    stage('Test') {
+      when {
+        expression {
+          params.RUN_TESTS == true
         }
-        stage('Login') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                echo 'Login Completed' 
-       }
+      }
+      steps {
+        echo 'Running tests...'
+        // Add test steps here
+      }
     }
-        stage('Push') {
-            steps {
-              sh 'docker push khaledalaa/hello1:2.0'
-            }
-            }
-         stage('Logout') {
-            steps {
-                sh 'docker logout'
-                echo 'Logout Completed' 
-       }
-    }
+    
+    stage('Deploy') {
+      when {
+        expression {
+          params.ENVIRONMENT == 'production'
         }
+      }
+      steps {
+        echo "Deploying to ${params.ENVIRONMENT} environment..."
+        // Add deployment steps here
+      }
     }
+  }
+}
