@@ -1,37 +1,25 @@
 pipeline {
   agent any
-  
-  parameters {
-    string(name: 'env', defaultValue: 'depl', description: '')
-    booleanParam(name: 'test', defaultValue: false, description: '?')
-  }
-  
-  environment {
-    BUILD_NUMBER = "${env.BUILD_NUMBER}"
-  }
-  
+
   stages {
-    stage('Test') {
-      when {
-        expression {
-          params.test == true
-        }
-      }
+    stage('Build') {
       steps {
-        echo 'run test stage.'
-        
+        echo 'Building...'
+        // Add build steps here
       }
     }
     
-    stage('dep') {
-      when {
-        expression {
-          params.env == 'depl'
-        }
-      }
+    stage('Test') {
       steps {
-        echo "Deploying to ${params.env} environment..."
-        
+        echo 'Running tests...'
+        // Add test steps here
+      }
+    }
+    
+    stage('Deploy') {
+      steps {
+        echo 'Deploying...'
+        // Add deployment steps here
       }
     }
   }
