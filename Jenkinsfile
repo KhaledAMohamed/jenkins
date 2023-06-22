@@ -1,25 +1,9 @@
 pipeline {
-  agent slave-sprints
-
+  agent any
   stages {
-    stage('Build') {
+    stage('Print welcome message') {
       steps {
-        echo 'Building...'
-       
-      }
-    }
-    
-    stage('Test') {
-      steps {
-        echo 'Running tests...'
-       
-      }
-    }
-    
-    stage('Deploy') {
-      steps {
-        echo 'Deploying...'
-     
+        printWelcomeMessage()
       }
     }
   }
