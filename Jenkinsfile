@@ -3,10 +3,10 @@ agent any
 stages {
 stage('Print welcome message') {
 steps {
-script {
+
 printWelcomeMessage() // Call the method from the shared library
-}
-checkout([$class: 'GitSCM', branches: [[name: 'master']], doGenerateSubmoduleConfigurations: false])
+
+
 }
 }
 }
