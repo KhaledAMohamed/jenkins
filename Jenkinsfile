@@ -1,2 +1,2 @@
-@Library('jenkins:master') _
+@Library('jenkins) _
 jenkins-shared-library
