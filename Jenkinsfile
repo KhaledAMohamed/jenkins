@@ -6,7 +6,9 @@ pipeline {
         stage('Example') {
             steps {
                 script {
-                    jenkins-shared-library.groovy
+                    def groovyScript = libraryResource('jenkins-shared-library.groovy')
+                    load groovyScript
+                
                 }
             }
         }
