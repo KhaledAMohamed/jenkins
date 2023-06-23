@@ -1,2 +1,14 @@
 @Library('jenkins') _
-helloWorld()
+pipeline {
+    agent any
+
+    stages {
+        stage('Example') {
+            steps {
+                script {
+                    helloWorld() // Assuming `helloWorld()` is defined in the shared library
+                }
+            }
+        }
+    }
+}
