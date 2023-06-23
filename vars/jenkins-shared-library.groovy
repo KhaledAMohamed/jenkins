@@ -1,3 +1,11 @@
-def call(String name = 'User') {
- echo "Welcome, ${name}."
+pipeline {
+  agent any
+
+  stages {
+    stage('Echo Message') {
+      steps {
+        echo 'Hello, Jenkins!'
+      }
+    }
+  }
 }
