@@ -1,2 +1,2 @@
 @Library('jenkins') _
-load 'jenkins-shared-library.groovy'
+jenkins-shared-library.groovy
