@@ -1,3 +1,11 @@
-def printWelcomeMessage() {
-  println "Welcome to the Jenkins shared library!"
+pipeline {
+  agent any
+
+  stages {
+    stage('Echo Message') {
+      steps {
+        echo 'Hello, Jenkins!'
+      }
+    }
+  }
 }
