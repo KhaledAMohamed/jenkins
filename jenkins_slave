@@ -1,0 +1,11 @@
+pipeline {
+    agent { label 'node' }
+
+    stages {
+        stage('test') {
+            steps {
+                echo "This is a sample message."
+            }
+        }
+    }
+}
