@@ -1,4 +1,4 @@
-@Library('jenkins-shared-library') _
+@Library('jenkins-shared-library, retriever: 'libs-jenkinsfile') _
 pipeline {
   agent any
   stages {
