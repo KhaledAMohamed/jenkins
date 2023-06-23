@@ -1,5 +1,5 @@
 def call() {
 
-    sh "echo Hello  Today is "
+    sh "echo this is test from groovy file  "
 
 }
