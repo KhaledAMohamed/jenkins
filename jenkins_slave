@@ -1,10 +1,15 @@
 pipeline {
-    agent any
+    agent { label 'node' }
 
     stages {
-        stage('test') {
+        stage('Test') {
             steps {
                 echo "This is a sample message."
+            }
+        }
+        stage('dep') {
+            steps {
+                echo "test for salve-agent"
             }
         }
     }
