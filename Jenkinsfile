@@ -1,2 +1,2 @@
 @Library('jenkins') _
-welcomeJob ‘lambdatest’
+jenkins-shared-library
