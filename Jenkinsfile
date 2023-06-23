@@ -1,5 +1,3 @@
-def libraryName = 'jenkins-shared-library'
-@Library(libraryName) _
 pipeline {
   agent any
   stages {
