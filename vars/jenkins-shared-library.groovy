@@ -1,11 +1,5 @@
-pipeline {
-  agent any
-
-  stages {
-    stage('Echo Message') {
-      steps {
-        sh "echo 'Hello, Jenkins!'"
-      }
-    }
-  }
+def call(String name = 'human') {
+    // Any valid steps can be called from this code, just like in other
+    // Scripted Pipeline
+    echo "Hello, ${name}."
 }
