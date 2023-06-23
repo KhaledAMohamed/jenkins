@@ -1,3 +1,11 @@
-import hudson.FilePath
 @Library('jenkins') _
-jenkins-shared-library()
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            steps {
+                helloWorld()
+            }
+        }
+    }
+}
