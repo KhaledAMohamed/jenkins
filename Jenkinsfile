@@ -6,7 +6,7 @@ pipeline {
         stage('Example') {
             steps {
                 script {
-                    HelloWorld.groovy
+                    jenkins-shared-library.groovy
                 }
             }
         }
