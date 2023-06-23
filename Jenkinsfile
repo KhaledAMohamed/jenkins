@@ -1,2 +1,2 @@
 @Library('jenkins') _
-jenkins-shared-library "khaled"
+jenkins-shared-library
