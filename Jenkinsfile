@@ -1,2 +1,2 @@
 @Library('jenkins') _
-enkins-shared-library
+enkins-shared-library 'khaled'
